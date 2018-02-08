@@ -120,4 +120,23 @@ QUnit.module('Тестируем функцию sorting', function () {
 
 		assert.deepEqual(actual, expected);
 	});
+
+    QUnit.test('sorting сортируем по трём полям', function (assert) {
+        const initial = [
+            {a: 7, b: 'aa', c: 4},
+            {a: 8, b: 'ff', c: 3},
+            {a: 6, b: 'xx', c: 1},
+            {a: 2, b: 'rr', c: 2},
+        ];
+        const actual = sorting(initial, ['a', 'b', 'c']);
+
+        const expected = [
+            {a: 2, b: 'rr', c: 2},
+            {a: 6, b: 'xx', c: 1},
+            {a: 7, b: 'aa', c: 4},
+            {a: 8, b: 'ff', c: 3},
+        ];
+
+        assert.deepEqual(actual, expected);
+    });
 });
