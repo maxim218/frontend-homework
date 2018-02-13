@@ -21,20 +21,20 @@ function sorting(objectsArray, fieldsArray) {
         let shouldChange = false;
 
         fieldsArray.forEach((fieldName) => {
-            // if two params are not strings
-            if(typeof(first[fieldName]) !== "string" && typeof(second[fieldName]) !== "string") {
-                if (!answerFound) {
+            if(!answerFound) {
+                // if two params are not strings
+                if (typeof(first[fieldName]) !== "string" && typeof(second[fieldName]) !== "string") {
                     if (first[fieldName] > second[fieldName]) {
                         shouldChange = answerFound = true;
                     } else if (first[fieldName] < second[fieldName]) {
                         answerFound = true;
                     }
-                }
-            } else {
-                if (first[fieldName].localeCompare(second[fieldName]) === 1) {
-                    shouldChange = answerFound = true;
-                } else if (first[fieldName].localeCompare(second[fieldName]) === -1) {
-                    answerFound = true;
+                } else {
+                    if (first[fieldName].localeCompare(second[fieldName]) === 1) {
+                        shouldChange = answerFound = true;
+                    } else if (first[fieldName].localeCompare(second[fieldName]) === -1) {
+                        answerFound = true;
+                    }
                 }
             }
         });
