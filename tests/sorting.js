@@ -139,4 +139,68 @@ QUnit.module('Тестируем функцию sorting', function () {
 
         assert.deepEqual(actual, expected);
     });
+
+    QUnit.test('sorting не получает параметров', function (assert) {
+        const actual = sorting();
+        const expected = null;
+
+        assert.deepEqual(actual, expected);
+    });
+
+    QUnit.test('sorting получает только один параметр', function (assert) {
+        const initial = [
+            {x: 73, y: '12'},
+            {x: 25, y: '89'},
+        ];
+        const actual = sorting(initial);
+        const expected = null;
+
+        assert.deepEqual(actual, expected);
+    });
+
+    QUnit.test('sorting получает более двух параметров', function (assert) {
+        const initial = [
+            {aaa: 12, bbbb: 'aa88', cccc: 498},
+            {aaa: 56, bbbb: 'ff99', cccc: 378},
+        ];
+
+        const actual = sorting(initial, ['aaa', 'cccc', 'bbbb'], 218);
+        const expected = null;
+
+        assert.deepEqual(actual, expected);
+    });
+
+    QUnit.test('sorting получает параметр не того типа', function (assert) {
+        const initial = {
+        	nickname: "Maxim",
+			age: 45
+		};
+
+        const actual = sorting(initial, ['x', 'y']);
+        const expected = null;
+
+        assert.deepEqual(actual, expected);
+    });
+
+    QUnit.test('sorting сортировка русских букв', function (assert) {
+        const initial = [
+            {prop1: 'з'},
+            {prop1: 'я'},
+            {prop1: 'б'},
+            {prop1: 'ё'},
+            {prop1: 'ф'},
+        ];
+        const actual = sorting(initial, ['prop1']);
+
+        const expected = [
+            {prop1: 'б'},
+            {prop1: 'ё'},
+            {prop1: 'з'},
+            {prop1: 'ф'},
+            {prop1: 'я'},
+        ];
+
+        assert.deepEqual(actual, expected);
+    });
+
 });
